@@ -18,7 +18,7 @@ class TlsDependency {
     constructor() {
         this.arch = os.arch();
         this.platform = os.platform();
-        this.version = '1.15.1';
+        this.version = '1.0.0';
         this.filename = 'tls-client-xgo';
         this.extension = '';
         this.distribution = '';
@@ -66,7 +66,7 @@ class TlsDependency {
         }
 
         return {
-            DOWNLOAD_PATH: `https://github.com/bogdanfinn/tls-client/releases/download/v${this.version}/${filename}`,
+            DOWNLOAD_PATH: `https://github.com/SimonFernsR/tls-client/releases/download/v${this.version}/${filename}`,
             TLS_LIB_PATH: path.join(downloadFolder, filename),
         };
     }
