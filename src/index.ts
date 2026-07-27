@@ -44,7 +44,8 @@ export type ChromeProfile =
     | 'chrome_144'
     | 'chrome_144_PSK'
     | 'chrome_146'
-    | 'chrome_146_PSK';
+    | 'chrome_146_PSK'
+    | 'chrome_150';
 
 export type BraveProfile = 'brave_146' | 'brave_146_PSK';
 
