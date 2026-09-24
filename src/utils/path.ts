@@ -18,7 +18,7 @@ class TlsDependency {
     constructor() {
         this.arch = os.arch();
         this.platform = os.platform();
-        this.version = '1.0.0';
+        this.version = '1.1.0';
         this.filename = 'tls-client-xgo';
         this.extension = '';
         this.distribution = '';
