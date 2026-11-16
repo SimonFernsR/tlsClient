@@ -18,8 +18,11 @@ class TlsDependency {
     constructor() {
         this.arch = os.arch();
         this.platform = os.platform();
-        this.version = '1.1.0';
-        this.filename = 'tls-client-xgo';
+        // Track upstream bogdanfinn releases directly. The fork existed only to
+        // publish xgo-built binaries; upstream now ships the same artefacts and
+        // carries the newer Chrome profiles we need for Akamai.
+        this.version = '1.18.1';
+        this.filename = 'tls-client';
         this.extension = '';
         this.distribution = '';
         this.setDetails();
@@ -58,7 +61,9 @@ class TlsDependency {
     }
 
     getTLSDependencyPath(customPath?: string | null): TLSDependencyPath {
-        const filename = `${this.filename}-${this.version}-${this.distribution}.${this.extension}`;
+        // Upstream names assets <filename>-<distribution>-<version>.<ext>,
+        // the reverse of the fork's order.
+        const filename = `${this.filename}-${this.distribution}-${this.version}.${this.extension}`;
         const downloadFolder = customPath ?? os.tmpdir();
 
         if (!fs.existsSync(downloadFolder)) {
@@ -66,7 +71,7 @@ class TlsDependency {
         }
 
         return {
-            DOWNLOAD_PATH: `https://github.com/SimonFernsR/tls-client/releases/download/v${this.version}/${filename}`,
+            DOWNLOAD_PATH: `https://github.com/bogdanfinn/tls-client/releases/download/v${this.version}/${filename}`,
             TLS_LIB_PATH: path.join(downloadFolder, filename),
         };
     }
